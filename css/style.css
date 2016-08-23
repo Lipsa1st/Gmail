@@ -1,0 +1,23 @@
+.panel-body{
+margin-top: 80px;
+width: 400px;
+}
+
+#tit{
+    margin-top: 90px;
+    text-align: center;
+    text-transform: uppercase;
+    color:#A52A2A;
+}
+
+#desc{
+    margin-top: 90px;
+    text-align: center;
+    color:#9400D3;
+}
+#gmail{
+    color:#0A27DE;
+}
+#mail{
+    color:#DE0A17;
+}
