@@ -1,19 +1,23 @@
 var React= require('react');
-
+var LeftComponent=require('./LeftComponent');
 var MyleftPanel= React.createClass({
-    render: function(){
 
-        var productsArr =this.props.allLabelsData.map(function(e,i){
-        //return(<a href="">{e.name}</a>);
-        return(
-            <div key={i}>
-                <a key={i} href="#">{e.name}</a>
+clickEvent: function(labelId)
+{
+    this.props.getEmailByLabel(labelId);
+},
+
+    render: function(){
+        var productsArr =this.props.allLabelsData.map(function(message){
+            return(
+            <div>
+                <LeftComponent id={message.id} name={message.name} clickEvent={this.clickEvent}></LeftComponent>
             </div>
         )
-        });
+    },this);
 
         return(
-            <div className="panel panel-default">
+            <div>
                 {productsArr}
             </div>
         );

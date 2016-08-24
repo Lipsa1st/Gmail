@@ -1,10 +1,11 @@
 var React = require('react');
 var MyleftPanel = require('./MyleftPanel');
+var MyrightPanel = require('./MyrightPanel');
 var loadedData = false;
 var GmailBox = React.createClass({
  getInitialState: function()
    {
-     return({allLabelsData:[]});
+     return({allLabelsData:[],allInboxData:[],allMessages:[]});
    },
  gmailLogin: function()
  {
@@ -50,6 +51,7 @@ var GmailBox = React.createClass({
        }
    }, 500);
    this.allLabels();
+
  },
 
  allLabels: function()
@@ -67,42 +69,90 @@ var GmailBox = React.createClass({
       {
         console.log(data);
         this.setState({allLabelsData:data.labels});
+    //    this.getEmailByLabel();
         loadedData=true;
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(err.toString());
       }.bind(this)
    });
-
  },
+
+getEmailByLabel: function(labelId)
+{
+
+    var accessToken = localStorage.getItem('gToken');
+    $.ajax({
+     url: 'https://www.googleapis.com/gmail/v1/users/lipsa.scorpio%40gmail.com/messages?includeSpamTrash=false&labelIds='+labelId+'&maxResults=10&key={AIzaSyCBQo-CNe7KqecYNh_EyI3b9lTSMr_ftWw}',
+     dataType: 'json',
+     type: 'GET',
+     beforeSend: function (request)
+     {
+       request.setRequestHeader("Authorization", "Bearer "+accessToken);
+     },
+     success: function(data)
+     {
+         var messg=[];
+       for(var i=0;i<data.messages.length;i++)
+       {
+           messg.push(this.getMessages(data.messages[i].id));
+       }
+       console.log(messg);
+       this.setState({allMessages: messg});
+     }.bind(this),
+     error: function(xhr, status, err) {
+       console.error(err.toString());
+     }.bind(this)
+  });
+},
+
+getMessages: function(id)
+{
+    var accessToken = localStorage.getItem('gToken');
+    var d = $.ajax({
+        url: 'https://www.googleapis.com/gmail/v1/users/lipsa.scorpio%40gmail.com/messages/'+id+'?key={AIzaSyCBQo-CNe7KqecYNh_EyI3b9lTSMr_ftWw}',
+        dataType: 'json',
+        type: 'GET',
+        async:false,
+        beforeSend: function (request)
+        {
+          request.setRequestHeader("Authorization", "Bearer "+accessToken);
+        },
+        success: function(data){
+
+        }.bind(this),
+        error: function(xhr, status, err){
+            console.error(err.toString());
+        }.bind(this)
+    }).responseJSON;
+    return d;
+},
 
  render:function()
  {
    var leftPanel;
    var rightPanel;
-
    if(loadedData){
-     leftPanel =  <MyleftPanel allLabelsData={this.state.allLabelsData}/>
-     rightPanel='Work In Progress..........';
-   }
-
+     leftPanel =  <MyleftPanel allLabelsData={this.state.allLabelsData} getEmailByLabel={this.getEmailByLabel}/>
+    rightPanel =  <MyrightPanel allMessages={this.state.allMessages}/>
+    }
      return(
        <div className="GmailBox">
            <div className="container-fluid">
              <div className="row">
                  <div className="col-lg-1">
-                  <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-danger pull-left">SignIn</button>
+                    <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-danger pull-left">SignIn</button>
                   </div>
                   <div className="col-lg-8 pull-right">
-                    <h2 id="gmail">G<span id="mail">mail</span></h2>
+                        <h2 id="gmail">G<span id="mail">mail</span></h2>
                   </div>
               </div>
                <div className="row">
-                 <div className="col-lg-2">
-                    {leftPanel}
+                 <div className="col-lg-3">
+                        {leftPanel}
                   </div>
-                 <div className="col-lg-10">
-                 {rightPanel}
+                 <div className="col-lg-9">
+                        {rightPanel}
                  </div>
                </div>
          </div>

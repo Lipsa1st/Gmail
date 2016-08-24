@@ -3,6 +3,22 @@ margin-top: 80px;
 width: 400px;
 }
 
+a{
+    text-align: center;
+}
+
+#wrap{
+    word-wrap: break-word;
+}
+
+h6{
+    color:red;
+}
+
+#mydata{
+    color: black;
+}
+
 #tit{
     margin-top: 90px;
     text-align: center;
@@ -20,4 +36,7 @@ width: 400px;
 }
 #mail{
     color:#DE0A17;
+}
+table{
+    border-width: "2px";
 }
