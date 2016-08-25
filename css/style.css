@@ -3,8 +3,13 @@ margin-top: 80px;
 width: 400px;
 }
 
-a{
+#myLeftAnchor{
     text-align: center;
+
+}
+
+#myRightAnchor{
+    background-color: #F8F8FF;
 }
 
 #wrap{
@@ -12,11 +17,11 @@ a{
 }
 
 h6{
-    color:red;
+    color:#6666ff;
 }
 
 #mydata{
-    color: black;
+    color: #333333;
 }
 
 #tit{

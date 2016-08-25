@@ -1,5 +1,6 @@
 var React= require('react');
-
+var RightComponent=require('./RightComponent');
+var MyCompose=require('./myCompose');
 var MyrightPanel= React.createClass({
     render: function(){
         var frm='';
@@ -14,35 +15,28 @@ var MyrightPanel= React.createClass({
                     if(messages.payload.headers[i].name==="From"){
                         frm=messages.payload.headers[i].value;
                     }
-
                     if(messages.payload.headers[i].name==="Subject"){
                         subject=messages.payload.headers[i].value;
                     }
                     if(messages.payload.headers[i].name==="Date"){
                         date=messages.payload.headers[i].value;
                     }
+                    if(messages.payload.headers[i].name==="To"){
+                        to=messages.payload.headers[i].value;
+                    }
                 }
+                body=messages.payload.body;
                 return(
-                    <div id="wrap">
-                        <div className="row">
-                            <div className="col-lg-4">
-                                <h6>From: <span id="mydata">{frm}</span></h6>
-                            </div>
-
-                            <div className="col-lg-4">
-                                <h6>Subject: <span id="mydata">{subject}</span></h6>
-                            </div>
-                            <div className="col-lg-4">
-                                <h6>Date: <span id="mydata">{date}</span></h6>
-                            </div>
-                        </div>
+                    <div>
+                        <RightComponent frm={frm} subject={subject} to={to} date={date} />
                     </div>
                 );
         });
         return(
-            <div className="panel panel-default">
-                {MessageArr }
+            <div>
+                {MessageArr}
             </div>
+
         );
     }
 });

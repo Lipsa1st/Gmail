@@ -18,7 +18,9 @@ clickEvent: function(labelId)
 
         return(
             <div>
+            <li className="list-group-item">
                 {productsArr}
+            </li>
             </div>
         );
     }

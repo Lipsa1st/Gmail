@@ -1,5 +1,4 @@
 var React= require('react');
-
 var LeftComponent= React.createClass({
     handleEvent: function()
 	{
@@ -8,7 +7,7 @@ var LeftComponent= React.createClass({
     render: function(){
         return(
             <div>
-                <a onClick={this.handleEvent} className="list-group-item" href="#">{this.props.name}</a>
+                <a id="myLeftAnchor" onClick={this.handleEvent} className="list-group-item" href="#">{this.props.name}</a>
             </div>
         );
 }
