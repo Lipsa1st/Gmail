@@ -4,7 +4,7 @@ var GmailBox=require('./components/GmailBox');
 
 var MainComponent= React.createClass({
 render: function(){
-    console.log(" This is parent1");
+    console.log(" This is parent");
         return(
             <div className="container">
                 <div className="row">

@@ -1,14 +1,36 @@
 var React= require('react');
 var RightComponent=require('./RightComponent');
-var MyCompose=require('./myCompose');
+var MyInbox=require('./MyInbox');
 var MyrightPanel= React.createClass({
+
+    getHTMLPart: function(arr)
+    {
+      for(var x = 0; x < arr.length; x++)
+      {
+        if(typeof arr[x].parts === 'undefined')
+        {
+          if(arr[x].mimeType === 'text/html')
+          {
+            return arr[x].body.data;
+          }
+        }
+        else
+        {
+          return this.getHTMLPart(arr[x].parts);
+        }
+      }
+      return '';
+    },
+
+
     render: function(){
         var frm='';
         var to='';
         var subject='';
         var date='';
+        var body='';
+        console.log("My Messages--- "+this.props.allMessages);
 
-            console.log("My Messages--- "+this.props.allMessages);
             var MessageArr= this.props.allMessages.map(function(messages,i){
                 for(var i=0;i<messages.payload.headers.length;i++)
                 {
@@ -25,10 +47,20 @@ var MyrightPanel= React.createClass({
                         to=messages.payload.headers[i].value;
                     }
                 }
-                body=messages.payload.body;
+                if(typeof messages.payload.parts==="undefined")
+                {
+                    body= messages.payload.body.data;
+
+                }
+                else
+                {
+
+                    body=this.getHTMLPart(messages.payload);
+                }
+                console.log("Body"+body);
                 return(
                     <div>
-                        <RightComponent frm={frm} subject={subject} to={to} date={date} />
+                        <RightComponent frm={frm} subject={subject} body={body} to={to} date={date} />
                     </div>
                 );
         });

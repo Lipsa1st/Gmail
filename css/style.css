@@ -3,9 +3,27 @@ margin-top: 80px;
 width: 400px;
 }
 
+
+#fromTo{
+    color:#FF1493;
+}
+
 #myLeftAnchor{
     text-align: center;
+}
 
+#composeAnchor{
+    color:white;
+}
+
+#rules{
+    resize: both;
+    width: 500px;
+    overflow: auto;
+    border: 1px solid;
+    padding: 10px;
+    float:  none;
+    margin-left: 60px;
 }
 
 #myRightAnchor{

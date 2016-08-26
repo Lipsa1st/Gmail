@@ -140,26 +140,26 @@ getMessages: function(id)
            <div className="container-fluid">
              <div className="row">
                  <div className="col-lg-1">
-                    <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-danger pull-left">SignIn</button>
-                    {/*
-                        <button type="button" className="btn btn-info btn-md" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                            <div id="myModal" className="modal fade" role="dialog">
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <button type="button" className="close" data-dismiss="modal">&times;</button>
-                                        <h4 className="modal-title">Modal Header</h4>
-                                    </div>
-                                    <div className="modal-body">
-                                        <p>Some text in the modal.</p>
-                                    </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-                                    </div>
+                    <button id="authorize-button" onClick={this.gmailLogin} className="btn btn-danger pull-left">SignIn1</button>
+
+                    <button type="button" className="btn btn-info btn-md" data-toggle="modal1" data-target="#myModal1">Compose</button>
+                        <div id="myModal1" className="modal fade" role="dialog">
+                        <div className="modal-dialog">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <button type="button" className="close" data-dismiss="modal1">&times;</button>
+                                    <h4 className="modal-title">Modal Header</h4>
+                                </div>
+                                <div className="modal-body">
+                                    <p>Some text in the modal.</p>
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="btn btn-default" data-dismiss="modal1">Close</button>
                                 </div>
                             </div>
                         </div>
-                    */}
+                    </div>
+
                 </div>
                   <div className="col-lg-8 pull-right">
                         <h2 id="gmail">G<span id="mail">mail</span></h2>

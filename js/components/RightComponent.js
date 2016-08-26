@@ -1,16 +1,27 @@
 var React= require('react');
-var MyCompose=require('./MyCompose');
+var MyInbox=require('./MyInbox');
 var RightComponent= React.createClass({
-    handleEvent: function()
-	{
-		this.props.clickEvent(this.props.id);
-	},
+
+    getInitialState: function()
+      {
+        return({myModal:false});
+      },
+
+        handleEvent: function()
+    	{
+    		this.props.clickEvent(this.props.id);
+    	},
+
+        handleModal: function()
+        {
+            return({myModal:true});
+        },
 
     render: function(){
         return(
             <div>
                 <div id="wrap">
-                <a href="#"  id="myRightAnchor" className="list-group-item">
+                <a href="#"  id="myRightAnchor" className="list-group-item" onClick={this.handleModal}>
                     <div className="row">
                         <div className="col-lg-4">
                             <h6>From: <span id="mydata">{this.props.frm}</span></h6>
@@ -24,7 +35,7 @@ var RightComponent= React.createClass({
                     </div>
                 </a>
                 </div>
-            <MyCompose frm={this.props.frm} to={this.props.to} body={this.props.body}/>
+                {this.state.myModal=true?<MyInbox frm={this.props.frm} to={this.props.to} body={this.props.body}/>:null}
             </div>
         );
 }
