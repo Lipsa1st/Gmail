@@ -12,22 +12,30 @@ var RightComponent= React.createClass({
     		this.props.clickEvent(this.props.id);
     	},
 
+        handleHideModal:function(){
+            console.log("Inside handleHideModal");
+            this.setState({myModal:false});
+            console.log(this.state.myModal);
+        },
+
         handleModal: function()
         {
-            return({myModal:true});
+            console.log("Inside handle");
+            this.setState({myModal:true});
+            console.log("current state:"+this.state.myModal);
         },
 
     render: function(){
         return(
             <div>
                 <div id="wrap">
-                <a href="#"  id="myRightAnchor" className="list-group-item" onClick={this.handleModal}>
+                <a href="#"  id="myRightAnchor" className="list-group-item" >
                     <div className="row">
                         <div className="col-lg-4">
                             <h6>From: <span id="mydata">{this.props.frm}</span></h6>
                         </div>
                         <div className="col-lg-4">
-                            <a data-target="#myModal" data-toggle="modal"><h6>Subject: {this.props.subject}</h6></a>
+                            <a data-target="#myModal" data-toggle="modal" onClick={this.handleModal}><h6>Subject: {this.props.subject}</h6></a>
                         </div>
                         <div className="col-lg-4">
                             <h6>Date: <span id="mydata">{this.props.date}</span></h6>
@@ -35,7 +43,7 @@ var RightComponent= React.createClass({
                     </div>
                 </a>
                 </div>
-                {this.state.myModal=true?<MyInbox frm={this.props.frm} to={this.props.to} body={this.props.body}/>:null}
+                {this.state.myModal?<MyInbox frm={this.props.frm} handleHideModal={this.handleHideModal} subject= {this.props.subject} to={this.props.to} body={this.props.body}/>:null}
             </div>
         );
 }

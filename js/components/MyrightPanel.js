@@ -29,6 +29,7 @@ var MyrightPanel= React.createClass({
         var subject='';
         var date='';
         var body='';
+        var that=this;
         console.log("My Messages--- "+this.props.allMessages);
 
             var MessageArr= this.props.allMessages.map(function(messages,i){
@@ -50,12 +51,11 @@ var MyrightPanel= React.createClass({
                 if(typeof messages.payload.parts==="undefined")
                 {
                     body= messages.payload.body.data;
-
                 }
                 else
                 {
 
-                    body=this.getHTMLPart(messages.payload);
+                    body=that.getHTMLPart(messages.payload);
                 }
                 console.log("Body"+body);
                 return(

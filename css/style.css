@@ -2,7 +2,22 @@
 margin-top: 80px;
 width: 400px;
 }
+.active{
+    color:red;
+}
 
+#iframe-message{
+     display: block;
+     width: 100%;
+     height: 50%;
+     border: none;
+     overflow-y: auto;
+     overflow-x: hidden;
+}
+
+#tableID{
+    color:#FF1493;
+}
 
 #fromTo{
     color:#FF1493;
@@ -13,7 +28,11 @@ width: 400px;
 }
 
 #composeAnchor{
-    color:white;
+    color: white;
+}
+
+#spanColor{
+    color: #00134d;
 }
 
 #rules{
@@ -54,9 +73,11 @@ h6{
     text-align: center;
     color:#9400D3;
 }
+
 #gmail{
     color:#0A27DE;
 }
+
 #mail{
     color:#DE0A17;
 }

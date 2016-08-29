@@ -17,18 +17,18 @@ var MyInbox= React.createClass({
                 <div className="modal-dialog modal-md">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <button type="button" className="close" data-dismiss="modal">&times;</button>
-                            <h4 className="modal-title"><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;Mails</h4>
-
+                            <button type="button" className="close"  onClick={this.props.handleHideModal}  data-dismiss="modal">&times;</button>
+                            <h4 className="modal-title"><span className="glyphicon glyphicon-envelope" aria-hidden="true"></span>&nbsp;&nbsp;View Mails</h4>
                         </div>
                         <div className="modal-body">
-                            <p id="fromTo"> From:  {this.props.frm}</p>
-                            <p id="fromTo"> To:   {this.props.to}</p>
+                            <p id="fromTo"><span id="spanColor"> From:</span>  {this.props.frm}</p>
+                            <p id="fromTo"><span id="spanColor"> To: </span>  {this.props.to}</p>
+                            <p id="fromTo"><span id="spanColor"> Subject:</span> {this.props.subject}</p>
                             <iframe id="iframe-message" ref="myIframe">
                             </iframe>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-info pull-right" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-info pull-right" onClick={this.props.handleHideModal} data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,7 @@ var MyInbox= React.createClass({
         encodedBody = encodedBody.replace(/-/g, '+').replace(/_/g, '/').replace(/\s/g, '');
         encodedBody = decodeURIComponent(escape(window.atob(encodedBody)));
         this.appendPre(encodedBody);
-
-},
+    },
 
 })
 module.exports=MyInbox
