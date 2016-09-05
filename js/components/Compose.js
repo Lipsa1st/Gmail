@@ -43,7 +43,7 @@ var Compose= React.createClass({
                                     </tr>
                                     <tr><td></td><td></td></tr>
                                     <tr>
-                                        <td>Subject:</td><td><input type="text" id="tableID" name="Subject" onChange={this.Sub} placeholder="From"/></td>
+                                        <td>Subject:</td><td><input type="text" id="tableID" name="Subject" onChange={this.Sub} placeholder="Subject"/></td>
                                     </tr>
                                     <tr></tr>
                                     <tr>

@@ -5,6 +5,17 @@ width: 400px;
 .active{
     color:red;
 }
+#tableHome{
+    width:300px;
+    height:300px:
+}
+#myPanel{
+    width:800px;
+}
+#wrap1{
+    width:1000px;
+    margin-left: 170px;
+}
 
 #iframe-message{
      display: block;

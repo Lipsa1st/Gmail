@@ -43,7 +43,7 @@ var RightComponent= React.createClass({
                     </div>
                 </a>
                 </div>
-                {this.state.myModal?<MyInbox frm={this.props.frm} handleHideModal={this.handleHideModal} subject= {this.props.subject} to={this.props.to} body={this.props.body}/>:null}
+                {this.state.myModal?<MyInbox frm={this.props.frm} handleHideModal={this.handleHideModal} subject= {this.props.subject} to={this.props.to} body={this.props.body} msgid={this.props.msgid}/>:null}
             </div>
         );
 }

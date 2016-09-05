@@ -22,7 +22,7 @@ render: function(){
 ReactDOM.render(
     <Router history={browserHistory}>
         <Route path="/" component={MainComponent}>
-            <IndexRoute component={Home}/>
+            <IndexRoute component={Home}/>//default component
             <Route path="/home" component={Home}/>
             <Route path="/about" component={About}/>
             <Route path="/gmailbox" component={GmailBox}/>

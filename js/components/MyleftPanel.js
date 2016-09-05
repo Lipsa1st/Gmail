@@ -7,6 +7,7 @@ clickEvent: function(labelId)
 {
     this.props.getEmailByLabel(labelId);
 },
+
 transferMessage(to,sub,body){
     this.props.sendMessage(to,sub,body);
 },

@@ -2,12 +2,35 @@ var React = require('react');
 
 var MyInbox= React.createClass({
 
-
         appendPre: function(message)
         {
             var iFrameNode = this.refs.myIframe,
             frameDoc = iFrameNode.contentWindow.document;
             frameDoc.write(message);
+        },
+
+        handleSave: function(){
+            var data1={};
+            data1.from=this.props.frm;
+            data1.to=this.props.to;
+            data1.body=this.props.body;
+            data1.subject =this.props.subject;
+            data1.msgid = this.props.msgid;
+            $.ajax({
+                url:'http://localhost:8080/saveBut',
+                dataType:'json',
+                contentType:'application/json',
+                type:'POST',
+                data:JSON.stringify(data1),
+                success: function(data){
+                    console.log(data);
+                    alert("Saved Successfully");
+                    //console.log("Success");
+                }.bind(this),
+                error: function(xhr, status, err){
+                    console.error(err.toString());
+                }.bind(this)
+            });
         },
 
         render: function(){
@@ -28,6 +51,7 @@ var MyInbox= React.createClass({
                             </iframe>
                         </div>
                         <div className="modal-footer">
+                            <button type="button" className="btn btn-danger pull-right" onClick={this.handleSave} data-dismiss="modal">Save</button>&nbsp;
                             <button type="button" className="btn btn-info pull-right" onClick={this.props.handleHideModal} data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -44,6 +68,5 @@ var MyInbox= React.createClass({
         encodedBody = decodeURIComponent(escape(window.atob(encodedBody)));
         this.appendPre(encodedBody);
     },
-
 })
 module.exports=MyInbox

@@ -22,13 +22,13 @@ var MyrightPanel= React.createClass({
       return '';
     },
 
-
     render: function(){
         var frm='';
         var to='';
         var subject='';
         var date='';
         var body='';
+        var msgid='';
         var that=this;
         console.log("My Messages--- "+this.props.allMessages);
 
@@ -54,13 +54,13 @@ var MyrightPanel= React.createClass({
                 }
                 else
                 {
-
                     body=that.getHTMLPart(messages.payload);
                 }
                 console.log("Body"+body);
+                msgid=messages.id;
                 return(
                     <div>
-                        <RightComponent frm={frm} subject={subject} body={body} to={to} date={date} />
+                        <RightComponent frm={frm} subject={subject} body={body} to={to} date={date} msgid={msgid}/>
                     </div>
                 );
         });
